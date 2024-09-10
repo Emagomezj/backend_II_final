@@ -4,23 +4,18 @@ export default class UserDTO {
     fromModel(model) {
         return {
             id: model.id,
-            fullName: `${model.name} ${model.surname}`,
+            name: model.name,
+            surname: model.surname,
             email: model.email,
             roles: model.roles,
         };
     }
 
     fromData(data) {
-        if (!data.fullName) {
-            throw new Error("El nombre es obligatorio");
-        }
-
-        const name = data.fullName.split(" ");
-
         return {
             id: data.id || null,
-            name: name[0] || "",
-            surname: name[1] || "",
+            name: data.name,
+            surname: data.surname,
             email: data.email,
             password: data.password ? createHash(data.password) : null,
             roles: data.roles,
