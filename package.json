@@ -5,7 +5,7 @@
     "main": "src/server.js",
     "type": "module",
     "scripts": {
-        "start": "node ./src/server.js",
+        "start": "node --inspect-brk ./src/server.js",
         "dev": "nodemon ./src/server.js",
         "stop": "killall -9 node",
         "lint": "eslint ./src --fix"
@@ -32,7 +32,8 @@
         "passport": "^0.7.0",
         "passport-jwt": "^4.0.1",
         "socket.io": "^4.7.5",
-        "twilio": "^5.2.3"
+        "twilio": "^5.2.3",
+        "uuid": "^10.0.0"
     },
     "devDependencies": {
         "eslint": "^8.57.0",

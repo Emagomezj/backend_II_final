@@ -30,6 +30,7 @@ export default class UserController {
     // Crear un nuevo usuario
     async create(req, res) {
         try {
+            console.log(req.body)
             const user = await this.#userService.insertOne(req.body);
             res.sendSuccess201(user);
         } catch (error) {

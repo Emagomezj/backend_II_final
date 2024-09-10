@@ -29,6 +29,7 @@ export default class UserService {
 
     // Crear un nuevo usuario
     async insertOne(data) {
+        console.log(data)
         return await this.#userRepository.save(data);
     }
 

@@ -51,6 +51,7 @@ export default class UserRepository {
 
     // Crear o actualizar un usuario
     async save(data) {
+        console.log(data)
         const userDTO = this.#userDTO.fromData(data);
         const user = await this.#userDAO.save(userDTO);
         return this.#userDTO.fromModel(user);
