@@ -8,4 +8,16 @@ export default class TicketDTO {
             purcharser: model.purcharser
         }
     }
+
+    fromData(data) {
+        const products = data.products.map(product => ({
+            product_id: product.product_id,
+            amount: Number(product.amount)
+        }));
+
+        return {
+            products,
+            purchaser: data.purchaser.trim()
+        };
+    }
 }
