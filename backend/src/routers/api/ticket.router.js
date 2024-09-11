@@ -17,7 +17,6 @@ export default class TicketRouter extends BaseRouter {
         // Define las rutas y asocia las funciones correspondientes
         this.addGetRoute("/", [ADMIN], (req, res) => this.#ticketController.getAll(req, res));
         this.addGetRoute("/:id", [STANDARD], (req, res) => this.#ticketController.getById(req, res));
-        this.addPostRoute("/", [STANDARD], (req, res) => this.#ticketController.create(req, res));
         this.addDeleteRoute("/:id", [ADMIN], (req, res) => this.#ticketController.delete(req, res));
 
         // Middleware para manejar errores

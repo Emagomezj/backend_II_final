@@ -23,6 +23,7 @@ export default class CartRouter extends BaseRouter {
         this.addPutRoute("/:cid/products/:pid", [STANDARD], (req, res) => this.#cartController.addOneProduct(req, res));
         this.addDeleteRoute("/:cid/products/:pid", [STANDARD], (req, res) => this.#cartController.removeOneProduct(req, res));
         this.addDeleteRoute("/:cid/products", [STANDARD], (req, res) => this.#cartController.removeAllProducts(req, res));
+        this.addPostRoute("/:cid/purcharse", [STANDARD], (req,res) => this.#cartController.purcharse(req,res))
 
         // Middleware para manejar errores
         // eslint-disable-next-line no-unused-vars
