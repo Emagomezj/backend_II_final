@@ -96,8 +96,9 @@ export default class CartController {
             const result = await this.#cartService.purcharse(cid, req)
             if(!result.succes) {
                 res.status(200).json(result.conflictProducts)
-            }
+            } else {
             res.status(200).json(result)
+        }
         } catch (error) {
             res.sendError(error)
         }

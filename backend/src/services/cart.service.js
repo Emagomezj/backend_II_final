@@ -99,7 +99,7 @@ export default class CartService {
             }
         }
         if(conflictProducts.length > 0) {
-            return {succes:false, conflictProducts}
+            return ({succes:false, conflictProducts})
         }
 
         for(const item of cart.products) {
@@ -109,6 +109,6 @@ export default class CartService {
         }
         const ticket = await this.#ticketRepository.save(cart.products, data.email)
         await this.#cartRepository.deleteOneById(cid)
-        return {succes: true, ticket: ticket.id, code: ticket.code}
+        return ({succes: true, ticket: ticket.id, code: ticket.code})
     }
 }
