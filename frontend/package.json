@@ -1,7 +1,7 @@
 {
-  "name": "segunda_practica_integradora_api",
+  "name": "trabajo_final_backend_ii",
   "version": "1.0.0",
-  "description": "Segunda Práctica Integradora para API",
+  "description": "trabajo_final_backend_ii",
   "type": "module",
   "scripts": {
     "dev": "vite",

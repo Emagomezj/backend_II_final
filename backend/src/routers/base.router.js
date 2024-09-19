@@ -1,7 +1,7 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 import { ERROR_INVALID_ID, ERROR_NOT_HAVE_PRIVILEGES, STATUS_CODES } from "../constants/messages.constant.js";
-import { checkAuth } from "../middlewares/auth.middleware.js";
+import { checkAuth} from "../middlewares/auth.middleware.js";
 
 export default class BaseRouter {
     #router;

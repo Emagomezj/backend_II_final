@@ -17,6 +17,7 @@ export default class SessionRouter extends BaseRouter {
         // Define las rutas y asocia las funciones correspondientes
         this.addPostRoute("/login", [], generateToken, (req, res) => this.#sessionController.login(req, res));
         this.addGetRoute("/current", [STANDARD], (req, res) => this.#sessionController.getCurrentUser(req, res));
+        this.addGetRoute("/logout", [],(req,res) => this.#sessionController.logout(req,res))
 
         // Middleware para manejar errores
         // eslint-disable-next-line no-unused-vars

@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import passport from "passport";
 import UserService from "../services/user.service.js";
+import {ERROR_NOT_HAVE_PRIVILEGES} from "../constants/messages.constant.js"
+import { ADMIN } from "../constants/roles.constant.js";
 import { JWT_TRANSLATIONS } from "../constants/messages.constant.js";
 
 const userService = new UserService();
@@ -52,3 +54,15 @@ export const checkAuth = (req, res, next) => {
         next();
     })(req, res, next);
 };
+
+export const validateOwnership = (req,res,next) => {
+    
+    if(req.roles.includes(ADMIN)){
+        return next()
+    }
+    if(req.id === req.params.id){
+        return next()
+    } else {
+        return next(new Error(ERROR_NOT_HAVE_PRIVILEGES))
+    }
+}

@@ -52,21 +52,34 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
     SMTP_PASSWORD=<password para permitir el envío - app password para Google>
     ```
 
-4. Inicia el servidor:
+4. En caso de así quererlo, se puede restaurar la base de datos utilizando 
+    ```bash
+    mongorestore --uri="mongodb://username:password@host:port/test" ./backup
+    ```
+
+5. Inicia el servidor:
 
     ```bash
     npm run dev
     npm start
     ```
 
+
+
 ## Uso
 
 ### Rutas Disponibles
 
 En el siguiente enlace se encuentra un archivo zip con entorno y collections configuradas específicamente para testear este proyecto.
+**https://drive.google.com/file/d/1LPXJiF259O2iTsBf3sqj_eVVA9MQlMiV/view?usp=sharing**
 
+### Front
 Otra forma de testearlo es mediante el front.
 
-```bash
-cd ../
-cd front
+### Usuarios de prueba
+A continuación encontrarás una lista de emails con los que puedes loguearte para comprobar la funcionalidad del proyecto. Para todos la contraseña es "password123", por lo que si utilizas la colección de postman que se detalla arriba, solo deberías cambiar el email.
+Emails:
+ - **john.doe@example.com**
+ - **juan.doe@example.com**
+ - **admin.doe@example.com**
+ - **jane.doe@example.com**
