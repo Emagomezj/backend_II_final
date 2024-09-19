@@ -3,7 +3,6 @@ import cookieParser from "cookie-parser";
 import paths from "./utils/paths.js";
 
 import { config as configDotenv } from "./config/dotenv.config.js";
-import { config as configHandlebars } from "./config/handlebars.config.js";
 import { config as configSocket } from "./config/socket.config.js";
 import { config as configPassport } from "./config/passport.config.js";
 import { config as configCORS } from "./config/cors.config.js";
@@ -15,7 +14,6 @@ import CartRouter from "./routers/api/cart.router.js";
 import ProductRouter from "./routers/api/product.router.js";
 import UserRouter from "./routers/api/user.router.js";
 import TicketRouter from "./routers/api/ticket.router.js"
-import HomeViewRouter from "./routers/home.view.router.js";
 
 const server = express();
 configDotenv(paths);
@@ -31,8 +29,6 @@ server.use(cookieParser(process.env.SECRET_KEY));
 // Declaración de ruta estática
 server.use("/public", express.static(paths.public));
 
-// Motor de plantillas
-configHandlebars(server);
 
 // Passport
 configPassport(server);
@@ -47,7 +43,6 @@ server.use("/api/products", new ProductRouter().getRouter());
 server.use("/api/sessions", new SessionRouter().getRouter());
 server.use("/api/users", new UserRouter().getRouter());
 server.use("/api/tickets", new TicketRouter().getRouter())
-server.use("/", new HomeViewRouter().getRouter());
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {
