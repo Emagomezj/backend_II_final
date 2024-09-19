@@ -31,10 +31,8 @@ export default class SessionController {
     }
     async logout(req, res) {
         try {
-            // Elimina el token de la cookie
             res.clearCookie("token");
 
-            // Envía una respuesta exitosa
             res.sendSuccess200({ message: "Logout exitoso" });
         } catch (error) {
             res.sendError(error);

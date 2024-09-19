@@ -1,4 +1,6 @@
 import UserService from "../services/user.service.js";
+import { ADMIN } from "../constants/roles.constant.js";
+import {ERROR_NOT_HAVE_PRIVILEGES} from "../constants/messages.constant.js"
 
 export default class UserController {
     #userService;
@@ -30,7 +32,6 @@ export default class UserController {
     // Crear un nuevo usuario
     async create(req, res) {
         try {
-            console.log(req.body)
             const user = await this.#userService.insertOne(req.body);
             res.sendSuccess201(user);
         } catch (error) {
@@ -41,6 +42,11 @@ export default class UserController {
     // Actualizar un usuario existente
     async update(req, res) {
         try {
+            if(req.body.roles){
+                if(!req.roles.includes(ADMIN)){
+                    return res.sendError(new Error(ERROR_NOT_HAVE_PRIVILEGES))
+                }
+            }
             const user = await this.#userService.updateOneById(req.params.id, req.body);
             res.sendSuccess200(user);
         } catch (error) {

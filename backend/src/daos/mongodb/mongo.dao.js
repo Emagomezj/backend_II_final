@@ -40,8 +40,13 @@ export default class MongoDAO {
 
         if (data.id) {
             object = await this.#model.findById(data.id);
-            object.set(data);
-
+            if (object) {
+                Object.keys(data).forEach((key) => {
+                    if (data[key] !== undefined && data[key] !== null) {
+                        object[key] = data[key];
+                    }
+                });
+            }
         } else {
             object = new this.#model(data);
         }
